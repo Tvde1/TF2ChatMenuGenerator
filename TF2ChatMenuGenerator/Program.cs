@@ -138,7 +138,7 @@ namespace TF2ChatMenuGenerator
             total.Add("alias startHud \"clear; developer 1; con_filter_enable 0; contimes 6; con_notifytime 100; separator_start\"");
             total.Add("alias stopHud  \"developer 0; con_filter_enable 0; con_notifytime 8; contimes 8\"");
             total.Add("alias separator_start \"echo [------------------------------------------------------------]\"");
-            total.Add("alias separator \"con_filter_enable 0; echo [------------------------------------------------------------]\"");
+            total.Add("alias separator \"con_filter_enable 0; echo [------------------------------------------------------------]\" //I would have liked to use \"con_filter_enabled 1\" here, but for some reason the next \"con_filter_enable 0\" won't work and the binds wouldn't show.");
             total.Add("stopHud");
             total.Add("");
 
@@ -197,6 +197,19 @@ namespace TF2ChatMenuGenerator
             }
 
             File.WriteAllLines(@"chatmenu.cfg", total);
+
+            emptyScreen();
+
+            Console.WriteLine("You're almost done.\nYou will also need \"exec chatmenu\" in your autoexec.cfg.");
+            Console.Write("\nDo you want to generate an empty autoexec.cfg with \"exec chatmenu\" in it? y/n: ");
+
+            input = Console.ReadKey().KeyChar.ToString().ToLower();
+
+            if (input == "y")
+            {
+                string[] autoexec = { "exec chatmenu" };
+                File.WriteAllLines(@"autoexec.cfg", autoexec);
+            }
 
         }
 
