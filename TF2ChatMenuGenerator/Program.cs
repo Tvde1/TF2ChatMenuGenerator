@@ -170,7 +170,7 @@ namespace TF2ChatMenuGenerator
                 totalMessage = "alias bindMessage_" + menu.activateKey + " \"startHud; bindMessage_Title; ";
                 foreach (string text in menu.messages)
                 {
-                    total.Add("alias bindMessage_" + menu.activateKey + "_Message" + count + " \"echo " + menu.activateKey + ": " + text + "\"");
+                    total.Add("alias bindMessage_" + menu.activateKey + "_Message" + count + " \"echo " + count + ": " + text + "\"");
                     totalMessage += "bindMessage_" + menu.activateKey + "_Message" + count + "; ";
                     count++;
                 }
